@@ -7,6 +7,7 @@ ActiveRecord::Base.establish_connection({
   })
 
 require 'sinatra/activerecord/rake'
+require './models/hangman'
 require 'csv'
 
 namespace :db do
@@ -27,14 +28,14 @@ namespace :db do
 
   desc "Import csv"
   task :load_data do
-
+  require 'csv'
   filename = 'words.csv'
 
-  CSV.foreach(filename, headers: true) do |csv| # Part 1: load
-    word = csv[0]
+  CSV.foreach(filename) do |csv| # Part 1: load
+    word = csv
     
     Hangman.create!(
-      word: word,
+      word: word
       ) # Part 3: store
     end
   end
