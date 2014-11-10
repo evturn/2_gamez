@@ -31,11 +31,10 @@ namespace :db do
   require 'csv'
   filename = 'words.csv'
 
-  CSV.foreach(filename) do |csv| # Part 1: load
-    word = csv
+  CSV.foreach(filename) do |line| # Part 1: load
     
     Hangman.create!(
-      word: word
+      word: line[0]
       ) # Part 3: store
     end
   end
