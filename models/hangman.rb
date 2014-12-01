@@ -18,13 +18,17 @@ class Hangman < ActiveRecord::Base
     self.state
   end
 
-  def correct
-    
 
+  def incorrect(letter)
+    mismatch_will_change!
+    unless word.chars.include?(letter)
+      self.mismatch += letter
+      self.save!
+    end
   end
 
   def random_word
-    ["southside", "drugs", "dipset", "burrito", "cadillac", "disrespect", "apron", "calories", "butter", "gangbang", "cream", "ribs"].sample
+    ["southside", "yam", "ocean", "burrito", "finance", "apron", "calories", "butter", "potato", "cream", "ribs"].sample
   end
 
 end

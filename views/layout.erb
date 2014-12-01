@@ -14,9 +14,9 @@
 <body>
 	<center>
 		<% if session[:current_user] %>
-    	<%= erb :'_nav_user' %>
+    	<%= erb :'partials/_nav_user' %>
 	  <% else %>
-			<%= erb :'_nav_non_user' %>
+			<%= erb :'partials/_nav_non_user' %>
 	  <% end %>
 
 	<%= yield %>

@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
 
 
-  get '/new' do
 
-    erb :'users/new'
+  post '/' do
+
+
   end
 
 

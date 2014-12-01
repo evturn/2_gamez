@@ -16,6 +16,9 @@ $(document).ready(function() {
     $(".log-in-form").slideToggle();
   });
 
+
+
+
   $('.btn').on("click", function(event){
       event.preventDefault();
       $.ajax ({
@@ -28,33 +31,44 @@ $(document).ready(function() {
         dataType: 'json',
         success: function(response) {
           $(".word").text(response.state)
+          if (response.mismatch.length >= 5) {
+            alert('You are obviously an idiot. Press OK (if you can read) to play again.')
+            location.reload();
+      }
         }
       });
     });
 
+
+
     $('.btn').click(function() {
-    $(this).fadeToggle("slow", "swing");
+      $(this).fadeToggle("slow", "swing");
+      });
+
+    
+
+
+   $(".hangman").mouseover(function(){
+    $(".title-hangman").css("color","yellow");
+    
+    });
+     $(".hangman").mouseleave(function(){
+      $(".title-hangman").css("color","white");
+    });
+
+
+
+
+  $('.hangman').click(function(){
+        var href= $(this).attr('href');
+        $('body').fadeOut( 500, function(){
+              // go to link when animation completes
+              window.location='/hangman';
+        });
+        // over ride browser following link when clicked
+        return false;
   });
 
- $(".hangman").mouseover(function(){
-  $(".title-hangman").css("color","yellow");
-  
-});
- $(".hangman").mouseleave(function(){
-  $(".title-hangman").css("color","white");
-});
-
-
-
-$('.hangman').click(function(){
-      var href= $(this).attr('href');
-      $('body').fadeOut( 500, function(){
-            // go to link when animation completes
-            window.location='/hangman';
-      });
-      // over ride browser following link when clicked
-      return false;
-});
 
 
 });

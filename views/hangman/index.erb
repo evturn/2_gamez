@@ -11,7 +11,17 @@
 <%= @game.state %>
 </div>
 
-<%= erb :'_keyboard' %>
+<%= erb :'partials/_keyboard' %>
+
+<script>
+
+
+	if (response.mismatch.length >= 5) {
+	      alert('You just lost.')
+	    }
+
+
+</script>
 
 
 

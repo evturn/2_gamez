@@ -10,12 +10,9 @@ class HangmanController < ApplicationController
     content_type :json
     letter = params['letter']
     state = Hangman.last.swap(letter)
+    mismatch = Hangman.last.incorrect(letter)
     
-    {
-      state: state
-    }.to_json
-
-
+    Hangman.last.to_json
   end
 
 end
